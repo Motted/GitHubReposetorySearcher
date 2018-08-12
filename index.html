@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="GitHubReposetory">
+
+<head>
+  <meta charset="utf-8" />
+  <script>
+    document.write('<base href="' + document.location + '" />');
+  </script>
+  <link rel="stylesheet" href="style.css" />
+  <script data-require="angularjs@1.6.2" data-semver="1.6.2" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.js"></script>
+  <script src="app.js"></script>
+  <script src="mainCtrl.js"></script>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" />
+
+</head>
+
+<body ng-controller="MainCtrl">
+
+  <br>
+  <h2>Moti Edry Git Hub Reposetory Searcher:</h2>
+  <br>
+  <div class="col-md-4">
+    <input type="text" ng-model="searcher" id="searcher" placeholder="Search GitHub" class="form-control" min-length="4" typeahead-editable="false" ng-keydown="[13].includes($event.keyCode) && onUserSearch(searcher)" />
+    <a href="#" class="search-icon">
+      <i class="fa fa-search" id="myimage" ng-click="onUserSearch(searcher)"></i>
+    </a>
+  </div>
+  <br>
+  <br>
+  <table>
+    <thead>
+      <tr>
+        <th>Name:</th>
+        <th>Owner Image:</th>
+        <th>Bookmark:</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="repo in repos">
+        <td>{{repo.name}}</td>
+        <td><img ng-src={{repo.owner.avatar_url}} alt="no image" width="200"> </td>
+        <td>
+          <button ng-click="addBookmark(repo)" class="btn btn-primary">Add Bookmark</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+
+</body>
+
+</html>
